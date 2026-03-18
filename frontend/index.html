@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPTM - Semana 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 40px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #efefef;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cadastro de nomes - Semana 1</h1>
+
+    <div class="form">
+      <input type="text" id="nome" placeholder="Digite um nome" />
+      <button onclick="salvarNome()">Salvar</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaNomes"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const apiUrl = "http://localhost:5217"; 
+
+    async function carregarNomes() {
+      try {
+        const resposta = await fetch(`${apiUrl}/nomes`);
+        const dados = await resposta.json();
+
+        const tabela = document.getElementById("tabelaNomes");
+        tabela.innerHTML = "";
+
+        dados.forEach(item => {
+          tabela.innerHTML += `
+            <tr>
+              <td>${item.id ?? ""}</td>
+              <td>${item.nome ?? ""}</td>
+            </tr>
+          `;
+        });
+      } catch (erro) {
+        alert("Erro ao carregar nomes.");
+        console.error(erro);
+      }
+    }
+
+    async function salvarNome() {
+      const input = document.getElementById("nome");
+      const nome = input.value.trim();
+
+      if (!nome) {
+        alert("Digite um nome.");
+        return;
+      }
+
+      try {
+        const resposta = await fetch(`${apiUrl}/nomes`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ nome })
+        });
+
+        if (!resposta.ok) {
+          alert("Erro ao salvar nome.");
+          return;
+        }
+
+        input.value = "";
+        await carregarNomes();
+      } catch (erro) {
+        alert("Erro ao conectar com a API.");
+        console.error(erro);
+      }
+    }
+
+    carregarNomes();
+  </script>
+</body>
+</html>
