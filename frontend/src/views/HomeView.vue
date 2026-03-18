@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import FormularioOcorrencia from '../components/FormularioOcorrencia.vue';
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h1>Registro de Ocorrência CPTM</h1>
+    <!-- O componente entra aqui -->
+    <FormularioOcorrencia />
   </main>
 </template>

@@ -14,6 +14,19 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.MapGet("/teste-oracle", async (IConfiguration config) => {
+    var connectionString = config.GetConnectionString("OracleConnection");
+    using var connection = new Oracle.ManagedDataAccess.Client.OracleConnection(connectionString);
+    try {
+        await connection.OpenAsync();
+        return Results.Ok(new { mensagem = "Conexão com Oracle Spatial: SUCESSO!", versao = connection.ServerVersion });
+    }
+    catch (Exception ex) {
+        return Results.Problem($"Erro ao conectar no Oracle: {ex.Message}");
+    }
+});
+
+
 app.UseCors("liberado");
 
 string connectionString = builder.Configuration.GetConnectionString("OracleConnection")
