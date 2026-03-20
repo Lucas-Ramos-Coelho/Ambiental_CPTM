@@ -1,0 +1,21 @@
+export const NOME_LOCAL_ATIV = [
+  { codigo: 1, descricao: 'Abrigo' },
+  { codigo: 2, descricao: 'Base de manutenção' },
+  { codigo: 3, descricao: 'Cabine Primária' },
+  { codigo: 4, descricao: 'Cabine Seccionadora' },
+  { codigo: 5, descricao: 'Estação' },
+  { codigo: 6, descricao: 'Lavador de TUE' },
+  { codigo: 7, descricao: 'Oficina' },
+  { codigo: 8, descricao: 'Pátio' },
+  { codigo: 9, descricao: 'Prédio administrativo' },
+  { codigo: 10, descricao: 'Prédio de apoio' },
+  { codigo: 11, descricao: 'Sala técnica' },
+  { codigo: 12, descricao: 'Subestação' },
+  { codigo: 13, descricao: 'Trecho - Km/poste' },
+  { codigo: 14, descricao: 'Vários' },
+  { codigo: 96, descricao: 'Outro(a)(s)' },
+  { codigo: 99, descricao: 'Indefinido(a)(s)' },
+  { codigo: 97, descricao: 'Não se aplica(m)' },
+  { codigo: 98, descricao: 'Inexistente(s)' },
+  { codigo: 100, descricao: 'Não avaliado(a)(s)' }
+];
