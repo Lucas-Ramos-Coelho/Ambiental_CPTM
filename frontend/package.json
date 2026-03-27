@@ -13,6 +13,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@tailwindcss/vite": "^4.2.2",
     "axios": "^1.13.6",
     "dexie": "^4.3.0",
@@ -24,6 +25,13 @@
     "vue": "^3.5.29",
     "vue-router": "^5.0.3",
     "workbox-window": "^7.4.0"
+=======
+    "axios": "^1.13.6",
+    "dexie": "^4.3.0",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.29",
+    "vue-router": "^5.0.3"
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

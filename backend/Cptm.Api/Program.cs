@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -7,10 +8,13 @@ using Cptm.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+=======
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
 using Oracle.ManagedDataAccess.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
+<<<<<<< HEAD
 // ====== JWT Authentication ======
 var jwtKey = builder.Configuration["Jwt:SecretKey"]
     ?? throw new InvalidOperationException("Jwt:SecretKey não configurada.");
@@ -523,6 +527,52 @@ app.MapGet("/api/nomes", async () =>
     using var cmd = conn.CreateCommand();
     cmd.CommandText = "SELECT ID, NOME FROM TESTE_SEMANA1 ORDER BY ID";
     using var reader = await cmd.ExecuteReaderAsync();
+=======
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("liberado", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+var app = builder.Build();
+
+app.MapGet("/teste-oracle", async (IConfiguration config) => {
+    var connectionString = config.GetConnectionString("OracleConnection");
+    using var connection = new Oracle.ManagedDataAccess.Client.OracleConnection(connectionString);
+    try {
+        await connection.OpenAsync();
+        return Results.Ok(new { mensagem = "Conexão com Oracle Spatial: SUCESSO!", versao = connection.ServerVersion });
+    }
+    catch (Exception ex) {
+        return Results.Problem($"Erro ao conectar no Oracle: {ex.Message}");
+    }
+});
+
+
+app.UseCors("liberado");
+
+string connectionString = builder.Configuration.GetConnectionString("OracleConnection")
+    ?? throw new InvalidOperationException("Connection string não encontrada.");
+
+app.MapGet("/", () => Results.Ok("API rodando"));
+
+app.MapGet("/nomes", async () =>
+{
+    var nomes = new List<object>();
+
+    using var conn = new OracleConnection(connectionString);
+    await conn.OpenAsync();
+
+    using var cmd = conn.CreateCommand();
+    cmd.CommandText = "SELECT ID, NOME FROM TESTE_SEMANA1 ORDER BY ID";
+
+    using var reader = await cmd.ExecuteReaderAsync();
+
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
     while (await reader.ReadAsync())
     {
         nomes.Add(new
@@ -531,7 +581,49 @@ app.MapGet("/api/nomes", async () =>
             Nome = reader["NOME"]?.ToString()
         });
     }
+<<<<<<< HEAD
     return Results.Ok(nomes);
 });
 
 app.Run();
+=======
+
+    return Results.Ok(nomes);
+});
+
+app.MapPost("/nomes", async (NomeRequest request) =>
+{
+    if (string.IsNullOrWhiteSpace(request.Nome))
+        return Results.BadRequest(new { mensagem = "Nome é obrigatório." });
+
+    using var conn = new OracleConnection(connectionString);
+    await conn.OpenAsync();
+
+    using var cmd = conn.CreateCommand();
+    cmd.CommandText = "INSERT INTO TESTE_SEMANA1 (NOME) VALUES (:nome)";
+    cmd.Parameters.Add(new OracleParameter("nome", request.Nome));
+
+    await cmd.ExecuteNonQueryAsync();
+
+    using var cmdSelect = conn.CreateCommand();
+    cmdSelect.CommandText = "SELECT ID, NOME FROM TESTE_SEMANA1 ORDER BY ID";
+
+    var nomes = new List<object>();
+    using var reader = await cmdSelect.ExecuteReaderAsync();
+
+    while (await reader.ReadAsync())
+    {
+        nomes.Add(new
+        {
+            Id = reader["ID"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["ID"]),
+            Nome = reader["NOME"]?.ToString()
+        });
+    }
+
+    return Results.Ok(nomes);
+});
+
+app.Run();
+
+record NomeRequest(string Nome);
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0

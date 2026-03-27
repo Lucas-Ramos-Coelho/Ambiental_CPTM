@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import { ref } from 'vue'
 import { db } from '../database'
 import axios from 'axios'
@@ -27,12 +28,24 @@ const loading = ref(false)
 
 const salvarOcorrencia = async () => {
   loading.value = true
+=======
+import { ref } from 'vue';
+import { db } from '../database'; // Importando o Dexie que você criou
+import axios from 'axios';
+
+const form = ref({ titulo: '', descricao: '', status: 'pendente' });
+const loading = ref(false);
+
+const salvarOcorrencia = async () => {
+  loading.value = true;
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
   
   // 1. Sempre salva no IndexedDB primeiro (Garantia de segurança dos dados)
   const idLocal = await db.ocorrencias.add({
     ...form.value,
     dataCriacao: new Date(),
     status: 'pendente'
+<<<<<<< HEAD
   })
 
   // 2. Tenta enviar para o Back-end se houver internet
@@ -50,4 +63,23 @@ const salvarOcorrencia = async () => {
   loading.value = false
   form.value = { titulo: '', descricao: '', status: 'pendente' }
 }
+=======
+  });
+
+  // 2. Tenta enviar para o Back-end se houver internet
+  if (navigator.onLine) {
+    try {
+      await axios.post('http://localhost:5217/ocorrencias', form.value);
+      // Se deu certo, atualiza o status no banco local para 'sincronizado'
+      await db.ocorrencias.update(idLocal, { status: 'sincronizado' });
+      alert("Enviado com sucesso ao Oracle!");
+    } catch (error) {
+      console.error("Erro ao enviar, ficará pendente no celular:", error);
+    }
+  }
+
+  loading.value = false;
+  form.value = { titulo: '', descricao: '', status: 'pendente' }; // Limpa form
+};
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
 </script>

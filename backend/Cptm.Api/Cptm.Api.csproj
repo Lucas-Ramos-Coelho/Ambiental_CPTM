@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
     <PackageReference Include="NetTopologySuite" Version="2.6.0" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.100" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.17.0" />
+=======
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.100" />
+>>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
   </ItemGroup>
 
 </Project>
