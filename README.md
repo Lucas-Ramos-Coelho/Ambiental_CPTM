@@ -3,7 +3,7 @@
 ## Objetivo da Semana 1
 A primeira semana do projeto teve como foco a preparação do ambiente de desenvolvimento e a validação de uma conexão mínima com banco de dados Oracle, conforme o planejamento definido no cronograma do projeto. 
 
-Menbros:
+Membros:
 
 Hellen 
 Pedro 
