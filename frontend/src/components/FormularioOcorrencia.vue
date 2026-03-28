@@ -17,6 +17,9 @@
 
 <script setup>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
 import { ref } from 'vue'
 import { db } from '../database'
 import axios from 'axios'
@@ -28,6 +31,7 @@ const loading = ref(false)
 
 const salvarOcorrencia = async () => {
   loading.value = true
+<<<<<<< HEAD
 =======
 import { ref } from 'vue';
 import { db } from '../database'; // Importando o Dexie que você criou
@@ -39,6 +43,8 @@ const loading = ref(false);
 const salvarOcorrencia = async () => {
   loading.value = true;
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
   
   // 1. Sempre salva no IndexedDB primeiro (Garantia de segurança dos dados)
   const idLocal = await db.ocorrencias.add({
@@ -46,6 +52,9 @@ const salvarOcorrencia = async () => {
     dataCriacao: new Date(),
     status: 'pendente'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
   })
 
   // 2. Tenta enviar para o Back-end se houver internet
@@ -63,6 +72,7 @@ const salvarOcorrencia = async () => {
   loading.value = false
   form.value = { titulo: '', descricao: '', status: 'pendente' }
 }
+<<<<<<< HEAD
 =======
   });
 
@@ -82,4 +92,6 @@ const salvarOcorrencia = async () => {
   form.value = { titulo: '', descricao: '', status: 'pendente' }; // Limpa form
 };
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
 </script>

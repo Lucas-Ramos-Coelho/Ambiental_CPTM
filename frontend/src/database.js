@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
 import Dexie from 'dexie'
 
 export const db = new Dexie('CptmAmbientalDB')
@@ -22,6 +25,7 @@ db.version(2).stores({
 // 'completo'     -> finalizado, aguardando sync
 // 'sincronizado' -> enviado ao Oracle com sucesso
 // 'erro'         -> falhou no envio, tentar novamente
+<<<<<<< HEAD
 =======
 import Dexie from 'dexie';
 
@@ -31,3 +35,5 @@ db.version(1).stores({
   // status pode ser: 'pendente' (offline) ou 'sincronizado' (online)
 });
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)

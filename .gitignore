@@ -4,7 +4,12 @@
 *.user
 node_modules/
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .fake
 =======
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+
+.fake
+>>>>>>> efea528 (correções accept changes)

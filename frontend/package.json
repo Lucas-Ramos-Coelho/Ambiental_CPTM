@@ -14,6 +14,9 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
     "@tailwindcss/vite": "^4.2.2",
     "axios": "^1.13.6",
     "dexie": "^4.3.0",
@@ -25,6 +28,7 @@
     "vue": "^3.5.29",
     "vue-router": "^5.0.3",
     "workbox-window": "^7.4.0"
+<<<<<<< HEAD
 =======
     "axios": "^1.13.6",
     "dexie": "^4.3.0",
@@ -32,6 +36,8 @@
     "vue": "^3.5.29",
     "vue-router": "^5.0.3"
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

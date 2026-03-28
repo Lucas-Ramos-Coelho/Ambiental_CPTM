@@ -1,5 +1,8 @@
 <script setup>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
 import { RouterView } from 'vue-router'
 import { onMounted, watch } from 'vue'
 import { sincronizarPendentes, carregarCacheReferencias } from '@/services/syncService'
@@ -31,6 +34,7 @@ watch(isOnline, (online, previous) => {
 <template>
   <RouterView />
 </template>
+<<<<<<< HEAD
 =======
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
@@ -139,3 +143,5 @@ nav a:first-of-type {
 }
 </style>
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)

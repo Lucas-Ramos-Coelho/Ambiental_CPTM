@@ -1,16 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAuthStore } from '@/stores/auth'
 import LoginView from '@/views/LoginView.vue'
 =======
 import HomeView from '../views/HomeView.vue'
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+import { useAuthStore } from '@/stores/auth'
+import LoginView from '@/views/LoginView.vue'
+>>>>>>> efea528 (correções accept changes)
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
       path: '/login',
       name: 'login',
       component: LoginView,
@@ -70,6 +78,7 @@ router.beforeEach(async (to) => {
   }
 
   return true
+<<<<<<< HEAD
 =======
       path: '/',
       name: 'home',
@@ -85,6 +94,8 @@ router.beforeEach(async (to) => {
     },
   ],
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
 })
 
 export default router

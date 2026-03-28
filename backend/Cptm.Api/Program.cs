@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -8,13 +11,19 @@ using Cptm.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+<<<<<<< HEAD
 =======
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
 using Oracle.ManagedDataAccess.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
 // ====== JWT Authentication ======
 var jwtKey = builder.Configuration["Jwt:SecretKey"]
     ?? throw new InvalidOperationException("Jwt:SecretKey não configurada.");
@@ -527,6 +536,7 @@ app.MapGet("/api/nomes", async () =>
     using var cmd = conn.CreateCommand();
     cmd.CommandText = "SELECT ID, NOME FROM TESTE_SEMANA1 ORDER BY ID";
     using var reader = await cmd.ExecuteReaderAsync();
+<<<<<<< HEAD
 =======
 builder.Services.AddCors(options =>
 {
@@ -573,6 +583,8 @@ app.MapGet("/nomes", async () =>
     using var reader = await cmd.ExecuteReaderAsync();
 
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
     while (await reader.ReadAsync())
     {
         nomes.Add(new
@@ -582,10 +594,14 @@ app.MapGet("/nomes", async () =>
         });
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efea528 (correções accept changes)
     return Results.Ok(nomes);
 });
 
 app.Run();
+<<<<<<< HEAD
 =======
 
     return Results.Ok(nomes);
@@ -627,3 +643,5 @@ app.Run();
 
 record NomeRequest(string Nome);
 >>>>>>> 1248e0acbeb7847ddd41678e923e753c890644a0
+=======
+>>>>>>> efea528 (correções accept changes)
